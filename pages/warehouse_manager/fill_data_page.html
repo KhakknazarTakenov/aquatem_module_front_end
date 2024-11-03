@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Зав. склада - Заполнение данных</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/cba5d3da34.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../style/nullstyle.css">
+    <link rel="stylesheet" href="../../style/global.css">
+    <link rel="stylesheet" href="../../style/warehouse_manager/fill_data_page.css">
+    <link rel="stylesheet" href="../../style/warehouse_manager/fill_data_page_adaptive.css">
+
+    <script src="../../script/global.js"></script>
+    <script src="../../script/redirector.js"></script>
+    <script src="../../script/warehouse_manager/wh_manager_main.js"></script>
+    <script src="../../script/warehouse_manager/warehouse_manager_fill_data.js"></script>
+</head>
+    <body>
+    <div class="container">
+        <div class="filters">
+            <div class="installation_team_member_name_filter">
+                <input type="text" id="installation_team_member_name" name="installation_team_member_name" placeholder="Монтажник" class="white font_size_20">
+                <div class="search_icon installation_team_member_name_filter_search_icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <div class="members_list_picker hidden" id="members_list_picker">
+                    <!-- <div class="members_list_picker_option" dataset-member_id="1">
+                        Монтажник 1
+                    </div> -->
+                </div>
+            </div>
+            <div class="deal_name_filter">
+                <input type="text" id="deal_name_filter" name="deal_name_filter" placeholder="Название объекта" class="white font_size_20">
+                <div class="search_icon deal_name_filter_search_icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <div class="deals_list_picker hidden" id="deals_list_picker">
+                    <!-- <div class="deals_list_picker_option" dataset-deal_id="1">
+                        Сделка 1
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="deal_block">
+            <div class="selected_deal" id="selected_deal">
+                <div class="selected_deal_info">
+                    <span class="selected_deal_name" id="selected_deal_name">Название объекта</span> |
+                    <span class="selected_deal_date" id="selected_deal_date">Дата создания</span>
+                </div>
+                <div class="selected_deal_products_list">
+                    <div class="selected_deal_products_list__heading">
+                        <span class="heading_product_name">Материал</span>
+                        <span class="heading_product_consumption">Количество</span>
+                    </div>
+                    <div class="selected_deal_products" id="selected_deal_products">
+                        <!-- <div class="product" id="product_1">
+                            <div class="remove_product_btn">
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </div>
+                            <div class="product_name" id="product_1_name">Цемент</div>
+                            <div class="product_consumption">
+                                <input type="text" name="product_1_consumption" id="product_1" value="25" class="product_consumption_input">шт
+                            </div>
+                        </div> -->
+                        <!-- <div class="select_product_row">
+                            <input type="text" class="product_name" id="product_1_name" placeholder="Название материала" oninput="selectProduct(this)">
+                            <div class="available_products_list_block">
+                                <ul class="available_products_list" id="available_products_list">
+                                    <li class="available_product" dataset-product_id="product_1">Труба</li>
+                                    <li class="available_product" dataset-product_id="product_1">Труба</li>
+                                </ul>
+                            </div>
+                            <div class="product_consumption">
+                                <input type="text" name="product_1_consumption" id="product_1" value="25" class="product_consumption_input">шт
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="send_btn" onclick="send()">
+                    Выдать
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+.font_size_75 {
+    font-size: 75px;
+}
+.font_size_30 {
+    font-size: 30px;
+}
+.font_size_25 {
+    font-size: 25px;
+}
+.font_size_20 {
+    font-size: 20px;
+}
+.font_size_16 {
+    font-size: 16px;
+}
+
+.bold {
+    font-weight: 900;
+}
+.white {
+    color: #fff;
+}
+.black {
+    color: #000;
+}
+.flex {
+    display: flex;
+}
+.flex_direction_row {
+    flex-direction: row;
+}
+.align_items_center {
+    align-items: center;
+}
+.justify_content_center {
+    justify-content: center;
+}
+.mb_20 {
+    margin-bottom: 20px;
+}
+
+.hidden {
+    display: none;
+}

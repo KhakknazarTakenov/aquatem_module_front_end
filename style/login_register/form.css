@@ -1,0 +1,48 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-image: url(../../images/logo_background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.logo:nth-child(1) {
+    font-size: 25px;
+}
+.logo:nth-child(2) {
+    font-size: 15px;
+}
+.form_input {
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 18px;
+    margin: 5px 0;
+    border: 1px solid #000;
+    color: #000;
+}   
+.submit_btn {
+    width: 100%;
+    border-radius: 15px;
+    font-size: 18px;
+    padding: 10px;
+    background-color: #4FA7FF;
+    border: none;
+    color: #000;
+    transition: .3s;
+}
+.submit_btn:hover {
+    background-color: #3d82c7;
+    color: #fff;
+    cursor: pointer;
+}
+.heading {
+    font-size: 25px;
+}

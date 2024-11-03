@@ -1,0 +1,251 @@
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+
+    justify-content: space-around;
+
+    position: relative;
+}
+.container_up, .container_down {
+    width: 100%;
+    display: flex;
+}
+.container_up {
+    flex-direction: column;
+    align-items: center;
+}
+.filters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 20%;
+}
+.date_filter, .deal_name_filter, .installation_team_member_name_filter {
+    width: 100%;
+    margin: 10px 0;
+}
+.date_filter {
+    background-color: #4FA7FF;
+    padding: 10px 15px;
+    border-radius: 50px;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    transition: .3s;
+    cursor: pointer;
+}
+.date_filter_dates {
+    width: 100%;
+}
+.date_filter_dates input {
+    width: 100%;
+    margin: 0;
+}
+.date_filter:hover {
+    background-color: #4088cf;
+}
+.date_filter input {
+    border-radius: 15px;
+    flex-grow: 1;
+}
+.input_label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.search_icon {
+    padding: 10px 15px;
+    background-color: #fff;
+    border-radius: 50px;
+    font-size: 15px;
+}
+.search_icon i {
+    color: #4FA7FF;
+}
+.date_filter .search_icon {
+    width: 45px;
+    align-self: center;
+}
+.deal_name_filter, .installation_team_member_name_filter, .materials_amount_total_list__search_field__filter {
+    display: flex;
+    height: 67px;
+    position: relative;
+    border-radius: 50px;
+}
+#deal_name, #installation_team_member_name, #product_name {
+    background-color: #4FA7FF;
+    color: #fff;
+    padding: 15px;
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    transition: .3s;
+}
+#deal_name::placeholder, #installation_team_member_name::placeholder, #product_name::placeholder {
+    color: #fff;
+}
+#deal_name:hover, #deal_name:focus, #installation_team_member_name:hover, #installation_team_member_name:focus, #product_name:hover, #product_name:focus {
+    background-color: #4088cf;
+}
+.deal_name_filter_search_icon, .installation_team_member_name_filter_search_icon {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.materials_amount_total_list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    padding: 15px;
+    width: 50%;
+    box-shadow: 7px 6px 21px -7px rgba(0,0,0,0.75);
+    border-radius: 25px;
+}
+.materials_amount_total_list__heading {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    display: flex;
+    flex-direction: row;
+    text-align: right;
+}
+.materials_amount_total_list__search_field {
+    width: 50%;
+}
+.materials_amount_total_list__materials_list {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.materials_amount_total_list__materials_list__row, .deal_material_row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 5px 0;
+}
+.materials_amount_total_list__materials_list__row__data_text, .deal_material_row_data_text {
+    background-color: #E6F0FA;
+    padding: 10px;
+    height: 100%;
+    width: 25%;
+    border-radius: 8px;
+    font-size: 14px;
+    text-align: center;
+    margin: 0 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a light shadow */
+    color: #333;
+    overflow-wrap: break-word;
+}
+.materials_amount_total_list__materials_list_head_row__text {
+    text-align: center;
+    width: 25%;
+}
+#product_name, .installation_team_member_name_filter_search_icon {
+    z-index: 2;
+}
+.materials_list_picker {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 25px;
+
+    background-color: #4FA7FF;
+    padding: 15px;
+    padding-top: 50px;
+    border-radius: 15px;
+    z-index: 0;
+}
+.material_option {
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 15px;
+    transition: .2s;
+}
+.material_option:hover {
+    cursor: pointer;
+    background-color: #4088cf;
+}
+
+.container_down {
+    width: 100%;
+    margin-top: 50px;
+    padding: 20px;
+}
+.deals_list {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.deal {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    padding: 15px;
+    box-shadow: 7px 6px 21px -7px rgba(0, 0, 0, 0.75);
+    border-radius: 25px;
+    margin: 20px;
+}
+.deal_info {
+    margin-bottom: 15px;
+}
+.deal_products_list__heading {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.deal_products_list__heading_row__text {
+    width: 25%;
+    text-align: center;
+}
+.deal_materials_list {
+    display: flex;
+    flex-direction: column;
+}
+
+#installation_team_member_name {
+    z-index: 2;
+}
+.members_list_picker {
+    z-index: 0;
+    border-radius: 15px;
+    padding: 20px;
+    padding-top: 50px;
+    position: absolute;
+    top: 25px;
+    left: 0;
+    right: 0;
+    background-color: #4FA7FF;
+}
+.members_list_picker_option {
+    text-align: center;
+    color: #fff;
+    transition: .2s;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.members_list_picker_option:hover {
+    background-color: #4088cf;
+}

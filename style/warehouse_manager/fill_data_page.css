@@ -1,0 +1,217 @@
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+
+    position: relative;
+}
+.filters {
+    width: 75%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}   
+.deal_name_filter, .installation_team_member_name_filter {
+    width: 45%;
+    margin: 10px 0;
+    display: flex;
+    height: 67px;
+    position: relative;
+    border-radius: 50px;
+}
+.input_label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.search_icon {
+    padding: 10px 15px;
+    background-color: #fff;
+    border-radius: 50px;
+    font-size: 15px;
+}
+.search_icon i {
+    color: #4FA7FF;
+}
+#deal_name_filter, #installation_team_member_name {
+    background-color: #4FA7FF;
+    color: #fff;
+    padding: 15px;
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    transition: .3s;
+}
+#deal_name_filter::placeholder, #installation_team_member_name::placeholder {
+    color: #fff;
+}
+#deal_name_filter:hover, #deal_name_filter:focus, #installation_team_member_name:hover, #installation_team_member_name:focus {
+    background-color: #4088cf;
+}
+.deal_name_filter_search_icon, .installation_team_member_name_filter_search_icon {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.deals_list_picker, .members_list_picker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50px;
+    border-radius: 15px;
+    width: 100%;
+    padding: 15px;
+    background-color: #4FA7FF;
+    z-index: 1;
+}
+.deals_list_picker_option, .members_list_picker_option {
+    transition: .3s;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    border-radius: 15px;
+}
+.deals_list_picker_option:hover, .members_list_picker_option:hover {
+    cursor: pointer;
+    background-color: #4088cf;
+}
+
+.deal_block {
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.selected_deal {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 25px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 7px 11px 42px -17px rgba(0,0,0,0.75);
+}
+.selected_deal_info {
+    font-size: 20px;
+    font-weight: bold;
+}
+.selected_deal_products_list {
+    width: 100%;
+    font-size: 20px;
+}
+.selected_deal_products_list__heading {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.selected_deal_products {
+    display: flex;
+    flex-direction: column;
+}
+.product {
+    margin: 10px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.remove_product_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+}
+
+.remove_product_btn i {
+    color: #4FA7FF;
+    transition: .3s;
+    font-size: 30px;
+}
+.remove_product_btn i:hover {
+    cursor: pointer;
+    color: rgb(187, 61, 61);
+}
+
+.heading_product_name, .product_name, .product_consumption, .heading_product_consumption {
+    width: 50%;
+    text-align: center;
+}
+.heading_product_name, .heading_product_consumption {
+    font-weight: bold;
+}
+.product_name, .product_consumption {
+    background-color: #CEE0F4;
+    margin: 0 10px 0 0;
+    padding: 10px;
+    border-radius: 10px;
+}
+.product_consumption input {
+    font-size: 20px;
+}
+
+.select_product_row {
+    display: flex;
+    flex-direction: row;
+
+    position: relative;
+}
+.available_products_list_block {
+    background-color: #CEE0F4;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+
+    position: absolute;
+    top: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 15px;
+}
+.available_products_list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.available_product {
+    text-align: center;
+    width: 100%;
+    margin: 10px 0 0 0;
+    transition: .3s;
+    border-radius: 15px;
+}
+.available_product:hover {
+    cursor: pointer;
+    background-color: #4088cf;
+}
+
+.send_btn {
+    color: #fff;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4FA7FF;
+    cursor: pointer;
+    transition: .3s;
+    margin-top: 20px;
+}
+.send_btn:hover {
+    background-color: #4088cf;
+}
+
+.hidden {
+    display: none;
+}

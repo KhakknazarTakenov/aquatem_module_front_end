@@ -1,0 +1,31 @@
+@media (max-width: 1000px) {
+    .materials_amount_total_list {
+        width: 100%;
+    }
+    .filters {
+        position: relative;
+        width: 100%;
+        top: auto;
+        left: auto;
+    }
+    .container {
+        height: auto;
+    }
+    .container_up {
+        margin-top: 30px;
+    }
+    .deals_list {
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .deal {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+@media (max-width: 500px) {
+    .deal_products_list__heading_row__text {
+        font-size: 14px;
+    }
+}

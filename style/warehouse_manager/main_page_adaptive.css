@@ -1,0 +1,16 @@
+@media (max-width: 860px) {
+    .container__left {
+        display: none;
+    }
+    .action_picker__buttons__button {
+        width: 80%;
+    }
+    .product_consumption_input {
+        width: 100%;
+    }
+}
+@media (max-width: 360px) {
+    .arrow_right {
+        display: none;
+    }
+}

@@ -1,0 +1,31 @@
+@media (max-width: 900px) {
+    .filters {
+        flex-direction: column;
+    }
+    .installation_team_member_name_filter, .deal_name_filter {
+        width: 80%;
+    }
+    .product_name {
+        overflow-wrap: break-word;
+    }
+}
+@media (max-width: 860px) {
+    .selected_deal {
+        width: 100%;
+    }
+    .filters {
+        width: 100%;
+    }
+    .installation_team_member_name_filter, .deal_name_filter {
+        width: 100%;
+    }
+    .product_consumption_input {
+        width: 100%;
+    }
+    .selected_deal_info {
+        font-size: 20px;
+    }
+    .selected_deal_products_list__heading span {
+        font-size: 16px;
+    }
+}

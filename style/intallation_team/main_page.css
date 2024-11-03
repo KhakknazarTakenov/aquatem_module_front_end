@@ -1,0 +1,157 @@
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+
+    justify-content: space-around;
+}
+.filters_block {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.date_filter, .deal_name_filter {
+    width: 40%;
+}
+.date_filter {
+    height: 67px;
+    background-color: #4FA7FF;
+    padding: 10px 15px;
+    border-radius: 50px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    transition: .3s;
+    cursor: pointer;
+}
+.date_filter:hover {
+    background-color: #4088cf;
+}
+.date_filter input {
+    border-radius: 15px;
+    flex-grow: 1;
+    margin: 0 5%;
+}
+.input_label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search_icon {
+    padding: 10px 15px;
+    background-color: #fff;
+    border-radius: 50px;
+    font-size: 15px;
+    
+}
+.search_icon i {
+    color: #4FA7FF;
+}
+.deal_name_filter {
+    display: flex;
+    height: 67px;
+    position: relative;
+    border-radius: 50px;
+}
+#deal_name {
+    background-color: #4FA7FF;
+    color: #fff;
+    padding: 15px;
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    font-size: 16px;
+    transition: .3s;
+}
+#deal_name::placeholder {
+    color: #fff;
+}
+#deal_name:hover, #deal_name:focus {
+    background-color: #4088cf;
+}
+.deal_name_filter_search_icon {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.send_btn_block {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.send_btn {
+    background-color: #4FA7FF;
+    border-radius: 50px;
+    padding: 10px 20px;
+    margin: 20px;
+    transition: .3s;
+}
+.send_btn:hover {
+    background-color: #4088cf;
+}
+.deals_list {
+    width: 60%;
+    padding: 30px;
+}
+
+.deal {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 25px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 7px 11px 42px -17px rgba(0,0,0,0.75);
+}
+.deal_info {
+    font-size: 20px;
+    font-weight: bold;
+}
+.deal_products_list {
+    width: 100%;
+    font-size: 20px;
+}
+.deal_products_list__heading {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.deal_products {
+    display: flex;
+    flex-direction: column;
+}
+.product {
+    margin: 10px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.heading_product_name, .product_name, .product_consumption, .heading_product_consumption {
+    width: 50%;
+}
+.heading_product_name, .heading_product_consumption {
+    font-weight: bold;
+}
+.product_name, .product_consumption {
+    background-color: #CEE0F4;
+    margin: 0 10px 0 0;
+    padding: 10px;
+    border-radius: 10px;
+    overflow-wrap: break-word;
+}
+.product_consumption input {
+    font-size: 20px;
+}

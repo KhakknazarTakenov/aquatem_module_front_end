@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель монтажников</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/cba5d3da34.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="./style/nullstyle.css">
+    <link rel="stylesheet" href="./style/global.css">
+    <link rel="stylesheet" href="./style/intallation_team/main_page.css">
+    <link rel="stylesheet" href="./style/intallation_team/main_apge_adaptive.css">
+
+    <script src="./script/global.js"></script>
+    <script src="./script/redirector.js"></script>
+    <script src="./script/installation_team/styles.js"></script>
+    <script src="./script/installation_team/ins_team_main.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="filters_block">
+            <div class="date_filter" onclick="showDatepicker()">
+                <span class="input_label white font_size_20">Дата</span>
+                <input type="date" id="datepicker" name="datepicker">
+                <div class="search_icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+
+            <div class="deal_name_filter">
+                <input type="text" id="deal_name" name="deal_name" placeholder="Название объекта" class="white font_size_20">
+                <div class="search_icon deal_name_filter_search_icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+        </div>
+        <div class="deals_list" id="deals_list">
+            <!-- <div class="deal" id="deal_1">
+                <div class="deal_info">
+                    <span class="deal_name">ТД "ЦУМ"</span>
+                    <span class="deal_date">25.01.2024</span>
+                </div>
+                <div class="deal_products_list">
+                    <div class="deal_products_list__heading">
+                        <span class="heading_product_name">Материал</span>
+                        <span class="heading_product_consumption">Расход</span>
+                    </div>
+                    <div class="deal_products">
+                        <div class="product" id="product_1">
+                            <div class="product_name" id="product_1_name">Цемент</div>
+                            <div class="product_consumption">
+                                <input type="text" name="product_1_consumption" id="product_1" value="25" class="product_consumption_input">кг
+                            </div>
+                        </div>
+                        <div class="product" id="product_1">
+                            <div class="product_name" id="product_1_name">Цемент</div>
+                            <div class="product_consumption">
+                                <input type="text" name="product_1_consumption" id="product_1" value="25" class="product_consumption_input">кг
+                            </div>
+                        </div>
+                        <div class="product" id="product_1">
+                            <div class="product_name" id="product_1_name">Цемент</div>
+                            <div class="product_consumption">
+                                <input type="text" name="product_1_consumption" id="product_1" value="25" class="product_consumption_input">кг
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</body>
+</html>
