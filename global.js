@@ -1,6 +1,6 @@
 const INSTALLATION_TEAM_DEPARTMENT = 27;
 const WAREHOUSE_MANAGER_DEPARTMENT = 45;
-const BASE_URL = "http://127.0.0.1:1328/montajniki";
+const BASE_URL = "https://storerobots.gamechanger.kz/montajniki";
 
 function formatDate(dateString) {
     const date = new Date(dateString);

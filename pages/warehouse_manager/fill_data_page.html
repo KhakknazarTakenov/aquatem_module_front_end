@@ -20,10 +20,32 @@
     <script src="../../script/redirector.js"></script>
     <script src="../../script/warehouse_manager/wh_manager_main.js"></script>
     <script src="../../script/warehouse_manager/warehouse_manager_fill_data.js"></script>
+
+     <!-- Yandex.Metrika counter --> 
+    <script type="text/javascript" > 
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; 
+        m[i].l=1*new Date(); 
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }} 
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) 
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); 
+    
+        ym(98895944, "init", { 
+            clickmap:true, 
+            trackLinks:true, 
+            accurateTrackBounce:true, 
+            webvisor:true 
+        }); 
+    </script> 
+    <noscript><div><img src="https://mc.yandex.ru/watch/98895944" style="position:absolute; left:-9999px;" alt="" /></div></noscript> 
+    <!-- /Yandex.Metrika counter -->
 </head>
     <body>
     <div class="container">
         <div class="filters">
+            <a href="./watch_data_page.html" class="go_to_watch_data_page_btn">
+                <i class="fa-solid fa-arrow-left"></i>
+                Посмотреть данные
+            </a>
             <div class="installation_team_member_name_filter">
                 <input type="text" id="installation_team_member_name" name="installation_team_member_name" placeholder="Монтажник" class="white font_size_20">
                 <div class="search_icon installation_team_member_name_filter_search_icon">
@@ -89,5 +111,8 @@
             </div>
         </div>
     </div>
+    <button class="logout_btn" onclick="logOut()">
+        <i class="fa-solid fa-right-from-bracket"></i>
+    </button>
 </body>
 </html>

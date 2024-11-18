@@ -1,0 +1,39 @@
+@media (max-width: 1000px) {
+    .deals_list {
+        width: 100%;
+    }
+}
+@media (max-width: 700px) {
+    .filters_block {
+        flex-direction: column;
+    }
+    .date_filter, .deal_name_filter {
+        width: 80%;
+        margin: 5px 0;
+    }
+    .date_filter input {
+        height: 100%;
+    }
+    .filters_block div {
+        align-items: center;
+    }
+}
+@media (max-width: 620px) {
+    .filters_block {
+        flex-direction: column;
+    }
+    .product_name, .product_consumption {
+        font-size: 15px;
+        text-wrap: wrap;
+        overflow-wrap: break-word;
+        margin-right: 5px;
+    }
+    .product_consumption input {
+        width: 100%;
+    } 
+}
+@media (max-width: 355px) {
+    .date_filter .search_icon {
+        display: none;
+    }
+}

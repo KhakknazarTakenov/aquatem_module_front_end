@@ -14,18 +14,17 @@ async function login() {
     })
   ).json();
   if (res.status) {
-    const expireDate = new Date();
-    expireDate.setTime(expireDate.getTime() + 1 * 60 * 60 * 1000); // Set to expire in 1 hour
-    document.cookie = `name=${firstName}; path=/; expires=${expireDate.toUTCString()};`;
-    document.cookie = `last_name=${lastName}; path=/; expires=${expireDate.toUTCString()};`;
+    localStorage.setItem('name', firstName)
+    localStorage.setItem('last_name', lastName)
     redirectBack("redirectAfterLogin");
   } else if (res.message.includes("no_pwd")) {
     alert(
       `Для пользователя ${firstName} ${lastName} еще не установлен пароль, пройдите регистрацию`
     );
     redirectToRegister();
+  } else {
+	alert("Имя пользователя или пароль не совпадают")
   }
-  // https://23f4-213-232-244-8.ngrok-free.app
 }
 
 async function register() {

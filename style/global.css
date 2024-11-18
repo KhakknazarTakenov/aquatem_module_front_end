@@ -42,3 +42,28 @@
 .hidden {
     display: none;
 }
+body {
+    position: relative;
+}
+.logout_btn {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+
+    background-color: #4FA7FF;
+    color: #fff;
+    padding: 10px;
+    border-radius: 15px;
+    transition: .3s;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+.logout_btn i {
+    color: #fff;
+}
+.logout_btn:hover {
+    background-color: #4088cf;
+}

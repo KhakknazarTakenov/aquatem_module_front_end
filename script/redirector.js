@@ -1,10 +1,6 @@
 async function checkIsUserLogined(page) {
-  const userName = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("name="));
-  const userLastName = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("last_name="));
+  const userName = localStorage.getItem("name");
+  const userLastName = localStorage.getItem("last_name");
   if (!userName || !userLastName) {
     redirectToLogin();
   } else {
@@ -19,14 +15,8 @@ async function checkIsUserLogined(page) {
 }
 
 async function checkUserPeremission(page) {
-  const firstName = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("name="))
-    .replace("name=", "");
-  const lastName = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("last_name="))
-    .replace("last_name=", "");
+  const firstName = localStorage.getItem("name");
+  const lastName = localStorage.getItem("last_name");
 
   const res = await (
     await fetch(BASE_URL + "/check_user_permission/", {
@@ -54,7 +44,7 @@ async function checkUserPeremission(page) {
 
 function checkWarehouseManagerPermission(permissions) {
   if (permissions === "all") return true;
-  else if (permissions === "installation_team") return true;
+  else if (permissions === "warehouse_manager") return true;
   else return false;
 }
 
@@ -94,4 +84,16 @@ function redirectToLogin() {
 function redirectToRegister() {
   localStorage.setItem("redirectAfterRegister", window.location.pathname);
   window.location.href = "/pages/register.html";
+}
+
+function logOut() {
+  if (!confirm("Вы уверены, что хотите выйти?"))
+    return;
+  if (localStorage.getItem("name"))
+    localStorage.removeItem("name");
+  if (localStorage.getItem("last_name"))
+    localStorage.removeItem("last_name");
+
+  localStorage.setItem("redirectAfterLogin", window.location.pathname)
+  window.location.href = "/pages/login.html";
 }

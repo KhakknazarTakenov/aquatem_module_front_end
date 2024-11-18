@@ -70,6 +70,7 @@
     border-radius: 50px;
     font-size: 16px;
     transition: .3s;
+    z-index: 2;
 }
 #deal_name::placeholder {
     color: #fff;
@@ -82,6 +83,7 @@
     right: 15px;
     top: 10px;
     cursor: pointer;
+    z-index: 2;
 }
 
 .send_btn_block {
@@ -154,4 +156,33 @@
 }
 .product_consumption input {
     font-size: 20px;
+}
+
+.deals_list_picker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 25px;
+    border-radius: 15px;
+    width: 100%;
+    padding: 15px;
+    background-color: #4FA7FF;
+    z-index: 1;
+    padding-top: 50px;
+}
+.deals_list_picker_option {
+    transition: .3s;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    border-radius: 15px;
+}
+.deals_list_picker_option:hover {
+    cursor: pointer;
+    background-color: #4088cf;
+}
+.hidden {
+    display: none;
 }

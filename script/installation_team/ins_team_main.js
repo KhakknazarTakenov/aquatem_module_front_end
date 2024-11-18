@@ -1,9 +1,10 @@
 let dealConsumptions = [];
+let currentAssignedId = 0;
 
 window.addEventListener("load", async () => {
     await checkIsUserLogined("installation_team");
-    const firstName = document.cookie.split('; ').find(row => row.startsWith('name=')).replace("name=", "");
-    const lastName = document.cookie.split('; ').find(row => row.startsWith('last_name=')).replace("last_name=", "");
+    const firstName = localStorage.getItem("name");
+    const lastName = localStorage.getItem("last_name");
     const deals = await (await fetch(BASE_URL + "/get_deals_with_products/", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -11,9 +12,20 @@ window.addEventListener("load", async () => {
             initiator_full_name: firstName + " " + lastName
         })
     })).json();
-    document.getElementById('datepicker').addEventListener('change', () => { filterDeals(deals.deals) });
-    document.getElementById('deal_name').addEventListener('input', () => { filterDeals(deals.deals) });
+    fillDealsSelectList(deals.deals);
+    currentAssignedId = deals.deals[0].assigned_id;
+    document.getElementById('datepicker').addEventListener('change', (event) => { searchDeal(event, deals.deals) });
+    document.getElementById('deal_name').addEventListener('input', (event) => { searchDeal(event, deals.deals) });
     generateDealBlocks(deals.deals);
+
+    document.getElementById("deal_name").addEventListener("focus", (event) => {
+        document.getElementById('deals_list_picker').classList.remove("hidden");
+    })
+    document.getElementById("deal_name").addEventListener("blur", (event) => {
+        setTimeout(() => {
+            document.getElementById('deals_list_picker').classList.add("hidden");
+        }, 500);
+    })
 })
 
 async function send(deal) {
@@ -22,8 +34,8 @@ async function send(deal) {
         alert("Кол-во товара не может быть отрицательным!")
         return;
     }
-    const userName = document.cookie.split('; ').find(row => row.startsWith('name=')).replace("name=", "");
-    const userLastName = document.cookie.split('; ').find(row => row.startsWith('last_name=')).replace("last_name=", "");
+    const userName = localStorage.getItem("name");
+    const userLastName = localStorage.getItem("last_name");
     const initiator_full_name = userName + " " + userLastName;
 
     const res = await (await fetch(BASE_URL + "/set_fact_amount_of_products_in_deal/", {
@@ -35,6 +47,9 @@ async function send(deal) {
             products: deal.products
         })
     })).json();
+    if (res.status) {
+        alert("Товары отправлены")
+    }
     console.log(res);
 }
 
@@ -146,20 +161,59 @@ function generateDealBlocks(filteredDeals) {
 
 function createProductInput(dealId, productId, productConsumption = null, productGivenAmount) {
     const input = document.createElement('input');
-    input.type = 'text';
+    input.type = 'number';
     input.name = `deal_${dealId}_product_${productId}_consumption`;
     input.id = `deal_${dealId}_product_${productId}`;
-    input.value = productConsumption || ""; // Initial value
+    input.value = Number(productConsumption) || Number(productGivenAmount); // Initial value
     input.className = 'product_consumption_input';
 
     input.addEventListener("input", (event) => {
         if (Number(event.target.value) < 0) {
             input.value = productConsumption;
         }
-        if (Number(event.target.value) > productGivenAmount) {
+        if (Number(event.target.value) > Number(productGivenAmount)) {
             input.value = productGivenAmount;
         }
     })
 
     return input;
+}
+
+
+function searchDeal(event, dealsList) {
+    const selectElement = document.getElementById('deals_list_picker');
+    selectElement.classList.remove("hidden")
+    const input = event.target.value.toLowerCase();
+
+    // Filter deals by title if input is not empty, otherwise use the full list
+    const filteredDeals = input
+        ? dealsList.filter(deal => deal.title.toLowerCase().includes(input))
+        : dealsList;
+
+    // Refill the list with filtered deals
+    if (filteredDeals.length <= 0) {
+        selectElement.classList.add("hidden");
+        return;
+    }
+    fillDealsSelectList(filteredDeals);
+}
+
+function fillDealsSelectList(deals) {
+    const selectElement = document.getElementById('deals_list_picker');
+    selectElement.innerHTML = ""; // Clear any previous options
+
+    // Filter deals based on the selected installation team member ID
+    deals.forEach(deal => {
+        const option = document.createElement('div');
+        option.dataset.deal_id = deal.id; // Set the deal ID
+        option.innerText = deal.title; // Display the deal title
+        option.classList.add("deals_list_picker_option");
+
+        option.addEventListener("click", () => {
+            generateDealBlocks([deal])
+            document.getElementById('deal_name').value = deal.title;
+        });
+
+        selectElement.appendChild(option); // Append the option to the dropdown
+    });
 }

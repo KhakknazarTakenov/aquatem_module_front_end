@@ -2,8 +2,9 @@ let all_materials = [];
 let all_deals = [];
 let all_members = [];
 window.addEventListener("load", async () => {
-    const firstName = document.cookie.split('; ').find(row => row.startsWith('name=')).replace("name=", "");
-    const lastName = document.cookie.split('; ').find(row => row.startsWith('last_name=')).replace("last_name=", "");
+    const firstName = localStorage.getItem("name");
+    const lastName = localStorage.getItem("last_name");
+    await checkIsUserLogined("warehouse_manager");
     const data = await (await fetch(BASE_URL + "/get_info_for_warehouse_manager_fill_data_panel/", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -18,6 +19,16 @@ window.addEventListener("load", async () => {
             initiator_full_name: firstName + " " + lastName
         })
     })).json();
+
+    fillDealsSelectList(data.data.all_deals)
+    document.getElementById("deal_name").addEventListener("focus", (event) => {
+        document.getElementById('deals_list_picker').classList.remove("hidden");
+    })
+    document.getElementById("deal_name").addEventListener("blur", (event) => {
+        setTimeout(() => {
+            document.getElementById('deals_list_picker').classList.add("hidden");
+        }, 500);
+    })
 
     const installationTeamMembers = data.data.installation_department_memebers;
 
@@ -54,7 +65,7 @@ window.addEventListener("load", async () => {
     document.getElementById('datepicker_to').addEventListener('change', () => {
         renderFilteredDealsElements(applyFilters(dealsList, installationTeamMembers));
     });
-    document.getElementById('deal_name').addEventListener('input', () => { renderFilteredDealsElements(applyFilters(dealsList, installationTeamMembers)) });
+    // document.getElementById('deal_name').addEventListener('input', () => { renderFilteredDealsElements(applyFilters(dealsList, installationTeamMembers)) });
 
     filterMaterials(null, materialsList)
     document.getElementById("materials_list_picker").classList.add("hidden");
@@ -310,6 +321,28 @@ function createDealElement(deal) {
         // Append materials list to deal div
         dealDiv.appendChild(materialsListDiv);
     }
+    const approveBtn = document.createElement("button");
+    approveBtn.innerHTML = "Подтвердить";
+    approveBtn.classList.add("approve_btn");
+    approveBtn.addEventListener("click", async () => {
+        const firstName = localStorage.getItem("name");
+        const lastName = localStorage.getItem("last_name");
+        const res = await (await fetch(
+            BASE_URL + "/approve_deal/",
+            {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    initiator_full_name: firstName + " " + lastName,
+                    deal_id: deal.id
+                })
+            }
+        )).json();
+        if (res.status) {
+            alert(`Сделка с id ${deal.id} подтверждена`);
+        }
+    })
+    dealDiv.appendChild(approveBtn);
     return dealDiv;
 }
 
@@ -387,6 +420,44 @@ function renderFilteredDealsElements(elements) {
     elements.forEach(elem => {
         document.getElementById("deals_list").appendChild(elem);
     })
+}
+
+function searchDeal(event, dealsList) {
+    const selectElement = document.getElementById('deals_list_picker');
+    selectElement.classList.remove("hidden")
+    const input = event.target.value.toLowerCase();
+
+    // Filter deals by title if input is not empty, otherwise use the full list
+    const filteredDeals = input
+        ? dealsList.filter(deal => deal.title.toLowerCase().includes(input))
+        : dealsList;
+
+    // Refill the list with filtered deals
+    if (filteredDeals.length <= 0) {
+        selectElement.classList.add("hidden");
+        return;
+    }
+    fillDealsSelectList(filteredDeals);
+}
+
+function fillDealsSelectList(deals) {
+    const selectElement = document.getElementById('deals_list_picker');
+    selectElement.innerHTML = ""; // Clear any previous options
+
+    // Filter deals based on the selected installation team member ID
+    deals.forEach(deal => {
+        const option = document.createElement('div');
+        option.dataset.deal_id = deal.id; // Set the deal ID
+        option.innerText = deal.title; // Display the deal title
+        option.classList.add("deals_list_picker_option");
+
+        option.addEventListener("click", () => {
+            renderFilteredDealsElements(applyFilters(all_deals, all_members))
+            document.getElementById('deal_name').value = deal.title;
+        });
+
+        selectElement.appendChild(option); // Append the option to the dropdown
+    });
 }
 
 

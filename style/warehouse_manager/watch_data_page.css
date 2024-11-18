@@ -107,6 +107,7 @@
   height: 100%;
   border-radius: 50px;
   transition: 0.3s;
+  z-index: 2;
 }
 #deal_name::placeholder,
 #installation_team_member_name::placeholder,
@@ -127,6 +128,7 @@
   right: 15px;
   top: 10px;
   cursor: pointer;
+  z-index: 2;
 }
 
 .materials_amount_total_list {
@@ -156,6 +158,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-height: 400px;
+  overflow-y: scroll;
 }
 .materials_amount_total_list__materials_list__row,
 .deal_material_row {
@@ -280,4 +284,59 @@
 }
 .members_list_picker_option:hover {
   background-color: #4088cf;
+}
+.go_to_fill_data_page_btn {
+  background-color: #4FA7FF;
+  color: #fff;
+  padding: 15px;
+  border-radius: 15px;
+  font-size: 18px;
+}
+.go_to_fill_data_page_btn i {
+    color: #fff;
+}
+
+.deals_list_picker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 25px;
+  border-radius: 15px;
+  width: 100%;
+  padding: 15px;
+  background-color: #4FA7FF;
+  z-index: 1;
+  padding-top: 50px;
+}
+.deals_list_picker_option {
+  transition: .3s;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  border-radius: 15px;
+}
+.deals_list_picker_option:hover {
+  cursor: pointer;
+  background-color: #4088cf;
+}
+
+.approve_btn {
+  background-color: #4FA7FF;
+  border-radius: 15px;
+  padding: 10px;
+  width: 40%;
+  align-self: center;
+  margin: 10px 0 0 0;
+  color: #fff;
+  font-size: 16px;
+  transition: .2s;
+}
+.approve_btn:hover {
+  background-color: #4088cf;
+}
+
+.hidden {
+  display: none;
 }

@@ -6,8 +6,9 @@ let adding_product_name = null;
 let selected_installation_team_member_id = null;
 
 window.addEventListener("load", async () => {
-    const firstName = document.cookie.split('; ').find(row => row.startsWith('name=')).replace("name=", "");
-    const lastName = document.cookie.split('; ').find(row => row.startsWith('last_name=')).replace("last_name=", "");
+    const firstName = localStorage.getItem("name");
+    const lastName = localStorage.getItem("last_name");
+    await checkIsUserLogined("warehouse_manager");
     const data = await (await fetch(BASE_URL + "/get_info_for_warehouse_manager_fill_data_panel/", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -191,6 +192,14 @@ function generateProductBlock(product) {
     consumptionInput.name = `product_${id}_given_amount`;
     consumptionInput.id = `given_amount_product_${id}`;
     consumptionInput.value = given_amount || 0;
+    consumptionInput.addEventListener("input", (event) => {
+        if (Number(event.target.value) < 0) {
+            consumptionInput.value = given_amount;
+        }
+        if (Number(event.target.value) > Number(given_amount)) {
+            consumptionInput.value = given_amount;
+        }
+    })
     consumptionInput.className = "product_consumption_input";
     productConsumptionDiv.appendChild(consumptionInput);
 
@@ -246,7 +255,6 @@ function generateAddProductBlock() {
         productElem.innerText = product.name;
         availableProductsList.appendChild(productElem);
         productElem.addEventListener("click", () => {
-            console.log("asd")
             generateProductBlock(product)
             selectedDeal.products.push(product)
             console.log(product)
@@ -259,7 +267,7 @@ function generateAddProductBlock() {
     const productConsumptionDiv = document.createElement("div");
     productConsumptionDiv.className = "product_consumption";
     const consumptionInput = document.createElement("input");
-    consumptionInput.type = "text";
+    consumptionInput.type = "number";
     consumptionInput.name = `adding_product_consumption`; // Use unique names
     consumptionInput.className = "product_consumption_input";
     consumptionInput.value = 0; // Default value
@@ -396,5 +404,8 @@ async function send() {
             assigned_id: assignedId
         })
     })).json();
+    if (res.status) {
+        alert("Метариал выдан");
+    }
     console.log(res);
 }
